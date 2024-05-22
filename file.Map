@@ -1,0 +1,202 @@
+
+There are no discarded input sections
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x08000000         0x00040000         xr
+SRAM             0x20000000         0x00005000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD main.o
+LOAD mgpio.o
+LOAD mrcc.o
+LOAD stm32f401_startupfile.o
+
+.text           0x08000000     0x13a0
+                0x08000000                        s_text = .
+ *(.isr_vector)
+ .isr_vector    0x08000000      0x1c4 stm32f401_startupfile.o
+                0x08000000                Vectors
+ *(.text)
+ .text          0x080001c4      0x174 main.o
+                0x080001c4                SVC_Handler
+                0x080001e0                BusFault_Handler
+                0x080001fc                main
+ .text          0x08000338      0xba8 mgpio.o
+                0x08000338                MGPIO_voidSetPinMode
+                0x08000510                MGPIO_voidSetPinOutputMode
+                0x080007e4                MGPIO_voidSetPinInputMode
+                0x080009bc                MGPIO_voidSetPinValue
+                0x08000bdc                MGPIO_voidGetPinValue
+                0x08000d20                MGPIO_voidSetResetPin
+ .text          0x08000ee0      0x3c4 mrcc.o
+                0x08000ee0                MRCC_voidInit
+                0x08000f60                MRCC_voidEnablePeripheral
+                0x08001064                MRCC_voidDisablePeripheral
+                0x08001178                MRCC_voidSetAPB1Prescaler
+                0x080011dc                MRCC_voidSetAPB2Prescaler
+                0x08001240                MRCC_voidSetAHBPrescaler
+ .text          0x080012a4       0xfc stm32f401_startupfile.o
+                0x080012a4                RTC_Alarm_IRQHandler
+                0x080012a4                EXTI2_IRQHandler
+                0x080012a4                TIM8_CC_IRQHandler
+                0x080012a4                DebugMon_Handler
+                0x080012a4                FMPI2C1_EV_IRQHandler
+                0x080012a4                SPI4_IRQHandler
+                0x080012a4                TIM1_CC_IRQHandler
+                0x080012a4                DMA2_Stream5_IRQHandler
+                0x080012a4                HardFault_Handler
+                0x080012a4                DMA1_Stream5_IRQHandler
+                0x080012a4                SysTick_Handler
+                0x080012a4                PVD_IRQHandler
+                0x080012a4                SDIO_IRQHandler
+                0x080012a4                TAMP_STAMP_IRQHandler
+                0x080012a4                PendSV_Handler
+                0x080012a4                NMI_Handler
+                0x080012a4                CAN2_RX1_IRQHandler
+                0x080012a4                EXTI3_IRQHandler
+                0x080012a4                TIM1_UP_TIM10_IRQHandler
+                0x080012a4                TIM8_UP_TIM13_IRQHandler
+                0x080012a4                I2C3_ER_IRQHandler
+                0x080012a4                EXTI0_IRQHandler
+                0x080012a4                I2C2_EV_IRQHandler
+                0x080012a4                DMA1_Stream2_IRQHandler
+                0x080012a4                CAN1_RX0_IRQHandler
+                0x080012a4                FPU_IRQHandler
+                0x080012a4                DEFAULT_HANDLER
+                0x080012a4                OTG_HS_WKUP_IRQHandler
+                0x080012a4                UsageFault_Handler
+                0x080012a4                CAN2_SCE_IRQHandler
+                0x080012a4                DMA2_Stream2_IRQHandler
+                0x080012a4                SPI1_IRQHandler
+                0x080012a4                TIM6_DAC_IRQHandler
+                0x080012a4                TIM1_BRK_TIM9_IRQHandler
+                0x080012a4                DCMI_IRQHandler
+                0x080012a4                CAN2_RX0_IRQHandler
+                0x080012a4                DMA2_Stream3_IRQHandler
+                0x080012a4                SAI2_IRQHandler
+                0x080012a4                USART6_IRQHandler
+                0x080012a4                TIM1_TRG_COM_TIM11_IRQHandl
+                0x080012a4                USART3_IRQHandler
+                0x080012a4                SAI1_IRQHandler
+                0x080012a4                TIM8_TRG_COM_TIM14_IRQHandl
+                0x080012a4                CAN1_RX1_IRQHandler
+                0x080012a4                UART5_IRQHandler
+                0x080012a4                DMA2_Stream0_IRQHandler
+                0x080012a4                TIM4_IRQHandler
+                0x080012a4                QUADSPI_IRQHandler
+                0x080012a4                I2C1_EV_IRQHandler
+                0x080012a4                DMA1_Stream6_IRQHandler
+                0x080012a4                DMA1_Stream1_IRQHandler
+                0x080012a4                UART4_IRQHandler
+                0x080012a4                TIM3_IRQHandler
+                0x080012a4                RCC_IRQHandler
+                0x080012a4                TIM8_BRK_TIM12_IRQHandler
+                0x080012a4                CEC_IRQHandler
+                0x080012a4                EXTI15_10_IRQHandler
+                0x080012a4                ADC_IRQHandler
+                0x080012a4                DMA1_Stream7_IRQHandler
+                0x080012a4                TIM7_IRQHandler
+                0x080012a4                CAN2_TX_IRQHandler
+                0x080012a4                TIM5_IRQHandler
+                0x080012a4                DMA2_Stream7_IRQHandler
+                0x080012a4                I2C3_EV_IRQHandler
+                0x080012a4                EXTI9_5_IRQHandler
+                0x080012a4                RTC_WKUP_IRQHandler
+                0x080012a4                SPDIF_RX_IRQHandler
+                0x080012a4                SPI2_IRQHandler
+                0x080012a4                OTG_HS_EP1_IN_IRQHandler
+                0x080012a4                MemManage_Handler
+                0x080012a4                DMA1_Stream0_IRQHandler
+                0x080012a4                CAN1_TX_IRQHandler
+                0x080012a4                FMPI2C1_ER_IRQHandler
+                0x080012a4                EXTI4_IRQHandler
+                0x080012a4                OTG_HS_EP1_OUT_IRQHandler
+                0x080012a4                WWDG_IRQHandler
+                0x080012a4                TIM2_IRQHandler
+                0x080012a4                OTG_FS_WKUP_IRQHandler
+                0x080012a4                OTG_HS_IRQHandler
+                0x080012a4                EXTI1_IRQHandler
+                0x080012a4                USART2_IRQHandler
+                0x080012a4                I2C2_ER_IRQHandler
+                0x080012a4                DMA2_Stream1_IRQHandler
+                0x080012a4                CAN1_SCE_IRQHandler
+                0x080012a4                FLASH_IRQHandler
+                0x080012a4                DMA2_Stream4_IRQHandler
+                0x080012a4                USART1_IRQHandler
+                0x080012a4                OTG_FS_IRQHandler
+                0x080012a4                SPI3_IRQHandler
+                0x080012a4                DMA1_Stream4_IRQHandler
+                0x080012a4                I2C1_ER_IRQHandler
+                0x080012a4                FMC_IRQHandler
+                0x080012a4                DMA2_Stream6_IRQHandler
+                0x080012a4                DMA1_Stream3_IRQHandler
+                0x080012b0                Reset_Handler
+ *(.rodata)
+                0x080013a0                        e_text = .
+
+.glue_7         0x080013a0        0x0
+ .glue_7        0x080013a0        0x0 linker stubs
+
+.glue_7t        0x080013a0        0x0
+ .glue_7t       0x080013a0        0x0 linker stubs
+
+.vfp11_veneer   0x080013a0        0x0
+ .vfp11_veneer  0x080013a0        0x0 linker stubs
+
+.v4_bx          0x080013a0        0x0
+ .v4_bx         0x080013a0        0x0 linker stubs
+
+.iplt           0x080013a0        0x0
+ .iplt          0x080013a0        0x0 main.o
+
+.rel.dyn        0x080013a0        0x0
+ .rel.iplt      0x080013a0        0x0 main.o
+
+.data           0x20000000        0x4 load address 0x080013a0
+                0x20000000                        s_data = .
+ *(.data)
+ .data          0x20000000        0x1 main.o
+                0x20000000                x
+ .data          0x20000001        0x0 mgpio.o
+ .data          0x20000001        0x0 mrcc.o
+ .data          0x20000001        0x0 stm32f401_startupfile.o
+                0x20000004                        . = ALIGN (0x4)
+ *fill*         0x20000001        0x3 
+                0x20000004                        e_data = .
+
+.igot.plt       0x20000004        0x0 load address 0x080013a4
+ .igot.plt      0x20000004        0x0 main.o
+
+.bss            0x20000004        0x4 load address 0x080013a4
+                0x20000004                        s_bss = .
+ *(.bss)
+ .bss           0x20000004        0x4 main.o
+                0x20000004                y
+ .bss           0x20000008        0x0 mgpio.o
+ .bss           0x20000008        0x0 mrcc.o
+ .bss           0x20000008        0x0 stm32f401_startupfile.o
+                0x20000008                        e_bss = .
+OUTPUT(file.elf elf32-littlearm)
+LOAD linker stubs
+
+.comment        0x00000000       0x44
+ .comment       0x00000000       0x44 main.o
+                                 0x45 (size before relaxing)
+ .comment       0x00000044       0x45 mgpio.o
+ .comment       0x00000044       0x45 mrcc.o
+ .comment       0x00000044       0x45 stm32f401_startupfile.o
+
+.ARM.attributes
+                0x00000000       0x2a
+ .ARM.attributes
+                0x00000000       0x2a main.o
+ .ARM.attributes
+                0x0000002a       0x2a mgpio.o
+ .ARM.attributes
+                0x00000054       0x2a mrcc.o
+ .ARM.attributes
+                0x0000007e       0x2a stm32f401_startupfile.o
